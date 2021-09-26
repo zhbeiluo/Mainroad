@@ -1,5 +1,6 @@
 {{- $logoTitle := .Site.Params.logo.title | default .Site.Title -}}
 {{- $logoSubtitle := .Site.Params.logo.subtitle | default .Site.Params.subtitle -}}
+{{- $poss := .Site.Params.logo.positions | default .Site.Params.poss -}}
 {{- $logoImage := .Site.Params.logo.image -}}
 
 {{- if or $logoTitle $logoImage }}
@@ -17,6 +18,9 @@
 				<div class="logo__item logo__text">
 					<div class="logo__title">{{ . }}</div>
 					{{ with $logoSubtitle }}<div class="logo__tagline">{{ . }}</div>{{ end }}
+					{{- range $p := $poss -}}
+						<div class="logo__tagline">{{ . }}</div><br>
+					{{- end}}
 				</div>
 			{{- end }}
 		</a>
